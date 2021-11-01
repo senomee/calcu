@@ -2,32 +2,36 @@ from tkinter import *
 
 expression = ""
 
-#default press, biar bisa klik grid itemnya
+
 def press(num):
     global expression
     expression = expression + str(num)
     nilai.set(expression)
 
-#ya buat sama dengan
+
 def samadengan():
     try:
         global expression
         total = str(eval(expression))
         nilai.set(total)
         expression = ""
-
-    finally:
+    except:
         nilai.set(" error ")
         expression = ""
 
-#buat tombol clear
+
 def clear():
     global expression
     expression = ""
     nilai.set("")
 
-#menu utama
+
 if __name__ == "__main__":
+    ui = Tk()
+    ui.resizable(0,0) #biar ga bisa di resize
+    ui.configure(background = "white")
+    ui.title("Kalkulator")
+    ui.geometry("235x370") #ukuran
     nilai = StringVar()
     ui = Tk()
     ui.resizable(0, 0) #biara gabisa di resize
@@ -37,7 +41,7 @@ if __name__ == "__main__":
     menu = Entry(ui, textvariable = nilai)
 
     menu.grid(columnspan = 4, ipadx = 10.)
-    #fungsi
+    # fungsi
     b0 = Button(ui, text = ' 0 ', fg = 'white', bg = 'grey', command = lambda: press(0), height = 4, width = 7)
     b00 = Button(ui, text = ' 00 ', fg = 'white', bg = 'grey', command = lambda: press(00), height = 4, width = 7)
     b1 = Button(ui, text = ' 1 ', fg = 'white', bg = 'grey', command = lambda: press(1), height = 4, width = 7)
@@ -58,7 +62,7 @@ if __name__ == "__main__":
     clear = Button(ui, text = 'Clear', fg = 'white', bg = 'grey', command = clear, height = 4, width = 16)
     samdeng = Button(ui, text = ' = ', fg = 'white', bg = 'grey', command = samadengan, height = 4, width = 16)
 
-    #layout
+    # layout
     # 0 -[    Jawaban     ]
     # 1 -[7]  [8]  [9]  [+]
     # 2 -[4]  [5]  [6]  [-]
@@ -67,7 +71,7 @@ if __name__ == "__main__":
     # 5 -[ clear ] [  ==  ]
     #    (0)  (1)  (2)  (3)
 
-    #penataan
+    # penataan
     b0.grid(row = 5, column = 1)
     b00.grid(row = 5, column = 2)
     b1.grid(row = 4, column = 0)
