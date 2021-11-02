@@ -29,50 +29,50 @@ def btnsamdeng():
 
 
 
-root = Tk()
-root.resizable(0, 0)
-root.title("Kalkulator")
-root.geometry("360x380")
+main = Tk()
+main.resizable(0, 0)
+main.title("Kalkulator")
+main.geometry("360x380")
 val = " "
 data = StringVar()  # convert button click to string variable
 
 # main display
-display = Entry(root, bd = 29, textvariable = data, justify = "right", bg = "grey", font = ("ariel", 20))
+display = Entry(main, bd = 29, textvariable = data, justify = "right", bg = "grey", font = ("ariel", 20))
 display.grid(row = 0, columnspan = 4)
 
 # button
-btn1 = Button(root, text = "1", font = ("ariel", 12, "bold"), bd = 12, height = 2, width = 6,
+btn1 = Button(main, text = "1", font = ("ariel", 12, "bold"), bd = 12, height = 2, width = 6,
               command = lambda: btnclick(1))
-btn2 = Button(root, text = "2", font = ("ariel", 12, "bold"), bd = 12, height = 2, width = 6,
+btn2 = Button(main, text = "2", font = ("ariel", 12, "bold"), bd = 12, height = 2, width = 6,
               command = lambda: btnclick(2))
-btn3 = Button(root, text = "3", font = ("ariel", 12, "bold"), bd = 12, height = 2, width = 6,
+btn3 = Button(main, text = "3", font = ("ariel", 12, "bold"), bd = 12, height = 2, width = 6,
               command = lambda: btnclick(3))
-btn4 = Button(root, text = "4", font = ("ariel", 12, "bold"), bd = 12, height = 2, width = 6,
+btn4 = Button(main, text = "4", font = ("ariel", 12, "bold"), bd = 12, height = 2, width = 6,
               command = lambda: btnclick(4))
-btn5 = Button(root, text = "5", font = ("ariel", 12, "bold"), bd = 12, height = 2, width = 6,
+btn5 = Button(main, text = "5", font = ("ariel", 12, "bold"), bd = 12, height = 2, width = 6,
               command = lambda: btnclick(5))
-btn6 = Button(root, text = "6", font = ("ariel", 12, "bold"), bd = 12, height = 2, width = 6,
+btn6 = Button(main, text = "6", font = ("ariel", 12, "bold"), bd = 12, height = 2, width = 6,
               command = lambda: btnclick(6))
-btn7 = Button(root, text = "7", font = ("ariel", 12, "bold"), bd = 12, height = 2, width = 6,
+btn7 = Button(main, text = "7", font = ("ariel", 12, "bold"), bd = 12, height = 2, width = 6,
               command = lambda: btnclick(7))
-btn8 = Button(root, text = "8", font = ("ariel", 12, "bold"), bd = 12, height = 2, width = 6,
+btn8 = Button(main, text = "8", font = ("ariel", 12, "bold"), bd = 12, height = 2, width = 6,
               command = lambda: btnclick(8))
-btn9 = Button(root, text = "9", font = ("ariel", 12, "bold"), bd = 12, height = 2, width = 6,
+btn9 = Button(main, text = "9", font = ("ariel", 12, "bold"), bd = 12, height = 2, width = 6,
               command = lambda: btnclick(9))
-btn0 = Button(root, text = "0", font = ("ariel", 12, "bold"), bd = 12, height = 2, width = 6,
+btn0 = Button(main, text = "0", font = ("ariel", 12, "bold"), bd = 12, height = 2, width = 6,
               command = lambda: btnclick(0))
 
-btnplus = Button(root, text = "+", font = ("ariel", 12, "bold"), bd = 12, height = 2, width = 6,
+btnplus = Button(main, text = "+", font = ("ariel", 12, "bold"), bd = 12, height = 2, width = 6,
                  command = lambda: btnclick('+'))
-btnmin = Button(root, text = "-", font = ("ariel", 12, "bold"), bd = 12, height = 2, width = 6,
+btnmin = Button(main, text = "-", font = ("ariel", 12, "bold"), bd = 12, height = 2, width = 6,
                 command = lambda: btnclick('-'))
-btnkali = Button(root, text = "*", font = ("ariel", 12, "bold"), bd = 12, height = 2, width = 6,
+btnkali = Button(main, text = "*", font = ("ariel", 12, "bold"), bd = 12, height = 2, width = 6,
                  command = lambda: btnclick('*'))
-btnbagi = Button(root, text = "/", font = ("ariel", 12, "bold"), bd = 12, height = 2, width = 6,
+btnbagi = Button(main, text = "/", font = ("ariel", 12, "bold"), bd = 12, height = 2, width = 6,
                  command = lambda: btnclick('/'))
-btnsamdeng = Button(root, text = "=", font = ("ariel", 12, "bold"), bd = 12, height = 2, width = 6,
+btnsamdeng = Button(main, text = "=", font = ("ariel", 12, "bold"), bd = 12, height = 2, width = 6,
                     command = btnsamdeng)
-btnclear = Button(root, text = "C", font = ("ariel", 12, "bold"), bd = 12, height = 2, width = 6,
+btnclear = Button(main, text = "C", font = ("ariel", 12, "bold"), bd = 12, height = 2, width = 6,
                   command = btnclear)
 
 # positioning
@@ -94,4 +94,4 @@ btnbagi.grid(row = 4, column = 2)
 btnsamdeng.grid(row = 4, column = 3)
 btnclear.grid(row = 4, column = 0)
 
-root.mainloop()
+main.mainloop()
