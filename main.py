@@ -1,12 +1,5 @@
 from tkinter import *
-from tkinter import ttk
 
-ui = Tk()
-ui.resizable(0, 0) #biara gabisa di resize
-ui.configure(background = "white")
-ui.title("Kalkulator")
-ui.geometry("235x370")
-#gatau ni ekspresion apaan
 expression = ""
 
 #default press, biar bisa klik grid itemnya
@@ -36,7 +29,11 @@ def clear():
 #menu utama
 if __name__ == "__main__":
     nilai = StringVar()
-
+    ui = Tk()
+    ui.resizable(0, 0) #biara gabisa di resize
+    ui.configure(background = "white")
+    ui.title("Kalkulator")
+    ui.geometry("235x370")
     menu = Entry(ui, textvariable = nilai)
 
     menu.grid(columnspan = 4, ipadx = 10.)
