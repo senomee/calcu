@@ -33,11 +33,7 @@ if __name__ == "__main__":
     ui.title("Kalkulator")
     ui.geometry("235x370") #ukuran
     nilai = StringVar()
-    ui = Tk()
-    ui.resizable(0, 0) #biara gabisa di resize
-    ui.configure(background = "white")
-    ui.title("Kalkulator")
-    ui.geometry("235x370")
+
     menu = Entry(ui, textvariable = nilai)
 
     menu.grid(columnspan = 4, ipadx = 10.)
