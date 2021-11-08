@@ -1,96 +1,97 @@
 from tkinter import *
 
-expression = ""
+
+def btnclick(number):
+    global val
+    val = val + str(number)
+    data.set(val)
 
 
-def press(num):
-    global expression
-    expression = expression + str(num)
-    nilai.set(expression)
+def btnclear():
+    global val
+    val = ""
+    data.set("")
 
 
-def samadengan():
+def btnsamdeng():
     try:
-        global expression
-        total = str(eval(expression))
-        nilai.set(total)
-        expression = ""
+        global val
+        result = str(eval(val))
+        data.set(result)
 
     except (ZeroDivisionError):
         val = ""
-        nilai.set("Tidak Dapat Dibagi 0")
+        data.set("Tidak Dapat Dibagi 0")
 
     except (SyntaxError, NameError):
         val = ""
-        nilai.set("syntax error")
+        data.set("syntax error")
 
 
-def clear():
-    global expression
-    expression = ""
-    nilai.set("")
 
+main = Tk()
+main.resizable(0, 0)
+main.title("Kalkulator")
+main.geometry("320x375")
+val = " "
+data = StringVar()  # convert button click to string variable
 
-if __name__ == "__main__":
-    ui = Tk()
-    ui.resizable(0,0) #biar ga bisa di resize
-    ui.configure(background = "white")
-    ui.title("Kalkulator")
-    ui.geometry("235x370") #ukuran
-    nilai = StringVar()
+# main display
+display = Entry(main, bd = 9, textvariable = data, justify = "right", bg = "grey", font = ("ariel", 20))
+display.grid(row = 0, columnspan = 25)
 
-    menu = Entry(ui, textvariable = nilai)
+# button
+btn1 = Button(main, text = "1", font = ("ariel", 12, "bold"), bd = 7, height = 3, width = 6,
+              command = lambda: btnclick(1))
+btn2 = Button(main, text = "2", font = ("ariel", 12, "bold"), bd = 7, height = 3, width = 6,
+              command = lambda: btnclick(2))
+btn3 = Button(main, text = "3", font = ("ariel", 12, "bold"), bd = 7, height = 3, width = 6,
+              command = lambda: btnclick(3))
+btn4 = Button(main, text = "4", font = ("ariel", 12, "bold"), bd = 7, height = 3, width = 6,
+              command = lambda: btnclick(4))
+btn5 = Button(main, text = "5", font = ("ariel", 12, "bold"), bd = 7, height = 3, width = 6,
+              command = lambda: btnclick(5))
+btn6 = Button(main, text = "6", font = ("ariel", 12, "bold"), bd = 7, height = 3, width = 6,
+              command = lambda: btnclick(6))
+btn7 = Button(main, text = "7", font = ("ariel", 12, "bold"), bd = 7, height = 3, width = 6,
+              command = lambda: btnclick(7))
+btn8 = Button(main, text = "8", font = ("ariel", 12, "bold"), bd = 7, height = 3, width = 6,
+              command = lambda: btnclick(8))
+btn9 = Button(main, text = "9", font = ("ariel", 12, "bold"), bd = 7, height = 3, width = 6,
+              command = lambda: btnclick(9))
+btn0 = Button(main, text = "0", font = ("ariel", 12, "bold"), bd = 7, height = 3, width = 6,
+              command = lambda: btnclick(0))
 
-    menu.grid(columnspan = 4, ipadx = 10.)
-    # fungsi
-    b0 = Button(ui, text = ' 0 ', fg = 'white', bg = 'grey', command = lambda: press(0), height = 4, width = 7)
-    b00 = Button(ui, text = ' 00 ', fg = 'white', bg = 'grey', command = lambda: press(00), height = 4, width = 7)
-    b1 = Button(ui, text = ' 1 ', fg = 'white', bg = 'grey', command = lambda: press(1), height = 4, width = 7)
-    b2 = Button(ui, text = ' 2 ', fg = 'white', bg = 'grey', command = lambda: press(2), height = 4, width = 7)
-    b3 = Button(ui, text = ' 3 ', fg = 'white', bg = 'grey', command = lambda: press(3), height = 4, width = 7)
-    b4 = Button(ui, text = ' 4 ', fg = 'white', bg = 'grey', command = lambda: press(4), height = 4, width = 7)
-    b5 = Button(ui, text = ' 5 ', fg = 'white', bg = 'grey', command = lambda: press(5), height = 4, width = 7)
-    b6 = Button(ui, text = ' 6 ', fg = 'white', bg = 'grey', command = lambda: press(6), height = 4, width = 7)
-    b7 = Button(ui, text = ' 7 ', fg = 'white', bg = 'grey', command = lambda: press(7), height = 4, width = 7)
-    b8 = Button(ui, text = ' 8 ', fg = 'white', bg = 'grey', command = lambda: press(8), height = 4, width = 7)
-    b9 = Button(ui, text = ' 9 ', fg = 'white', bg = 'grey', command = lambda: press(9), height = 4, width = 7)
+btnplus = Button(main, text = "+", font = ("ariel", 12, "bold"), bd = 7, height = 3, width = 6,
+                 command = lambda: btnclick('+'))
+btnmin = Button(main, text = "-", font = ("ariel", 12, "bold"), bd = 7, height = 3, width = 6,
+                command = lambda: btnclick('-'))
+btnkali = Button(main, text = "*", font = ("ariel", 12, "bold"), bd = 7, height = 3, width = 6,
+                 command = lambda: btnclick('*'))
+btnbagi = Button(main, text = "/", font = ("ariel", 12, "bold"), bd = 7, height = 3, width = 6,
+                 command = lambda: btnclick('/'))
+btnsamdeng = Button(main, text = "=", font = ("ariel", 12, "bold"), bd = 7, height = 3, width = 6,
+                    command = btnsamdeng)
+btnclear = Button(main, text = "C", font = ("ariel", 12, "bold"), bd = 7, height = 3, width = 6,
+                  command = btnclear)
 
-    koma = Button(ui, text = '.', fg = 'white', bg = 'grey', command = lambda: press('.'), height = 4, width = 7)
-    tambah = Button(ui, text = ' + ', fg = 'white', bg = 'grey', command = lambda: press("+"), height = 4, width = 7)
-    kurang = Button(ui, text = ' - ', fg = 'white', bg = 'grey', command = lambda: press("-"), height = 4, width = 7)
-    kali = Button(ui, text = ' * ', fg = 'white', bg = 'grey', command = lambda: press("*"), height = 4, width = 7)
-    bagi = Button(ui, text = ' / ', fg = 'white', bg = 'grey', command = lambda: press("/"), height = 4, width = 7)
-    clear = Button(ui, text = 'Clear', fg = 'white', bg = 'grey', command = clear, height = 4, width = 16)
-    samdeng = Button(ui, text = ' = ', fg = 'white', bg = 'grey', command = samadengan, height = 4, width = 16)
+# positioning
+btn1.grid(row = 3, column = 0)
+btn2.grid(row = 3, column = 1)
+btn3.grid(row = 3, column = 2)
+btn4.grid(row = 2, column = 0)
+btn5.grid(row = 2, column = 1)
+btn6.grid(row = 2, column = 2)
+btn7.grid(row = 1, column = 0)
+btn8.grid(row = 1, column = 1)
+btn9.grid(row = 1, column = 2)
+btn0.grid(row = 4, column = 1)
 
-    # layout
-    # 0 -[    Jawaban     ]
-    # 1 -[7]  [8]  [9]  [+]
-    # 2 -[4]  [5]  [6]  [-]
-    # 3 -[1]  [2]  [3]  [*]
-    # 4 -[.]  [0]  [00] [/]
-    # 5 -[ clear ] [  ==  ]
-    #    (0)  (1)  (2)  (3)
+btnplus.grid(row = 1, column = 3)
+btnmin.grid(row = 2, column = 3)
+btnkali.grid(row = 3, column = 3)
+btnbagi.grid(row = 4, column = 2)
+btnsamdeng.grid(row = 4, column = 3)
+btnclear.grid(row = 4, column = 0)
 
-    # penataan
-    b0.grid(row = 5, column = 1)
-    b00.grid(row = 5, column = 2)
-    b1.grid(row = 4, column = 0)
-    b2.grid(row = 4, column = 1)
-    b3.grid(row = 4, column = 2)
-    b4.grid(row = 3, column = 0)
-    b5.grid(row = 3, column = 1)
-    b6.grid(row = 3, column = 2)
-    b7.grid(row = 2, column = 0)
-    b8.grid(row = 2, column = 1)
-    b9.grid(row = 2, column = 2)
-
-    koma.grid(row = 5, column = 0)
-    tambah.grid(row = 2, column = 3)
-    kurang.grid(row = 3, column = 3)
-    kali.grid(row = 4, column = 3)
-    bagi.grid(row = 5, column = 3)
-    clear.place(x = 0, y = 303)
-    samdeng.place(x = 118, y = 303)
-
-    ui.mainloop()
+main.mainloop()
