@@ -1,23 +1,30 @@
 from tkinter import *
-
+   
 
 def btnclick(number):
     global val
     val = val + str(number)
     data.set(val)
 
-
 def btnclear():
     global val
     val = ""
     data.set("")
 
+def btnkudrat():
+    try:
+        global val
+        result = str(eval(f"{val}**2"))
+        data.set(result)
+    except(SyntaxError, NameError):
+        val = ""
+        data.set("Tolong Masukan Angka")
 
 def btnsamdeng():
     try:
-        global val
-        result = str(eval(val))
-        data.set(result)
+       global val
+       result = str(eval(val))
+       data.set(result)
 
     except (ZeroDivisionError):
         val = ""
@@ -27,12 +34,10 @@ def btnsamdeng():
         val = ""
         data.set("syntax error")
 
-
-
 main = Tk()
 main.resizable(0, 0)
 main.title("Kalkulator")
-main.geometry("320x375")
+main.geometry("320x455")
 val = " "
 data = StringVar()  # convert button click to string variable
 
@@ -70,10 +75,14 @@ btnkali = Button(main, text = "*", font = ("ariel", 12, "bold"), bd = 7, height 
                  command = lambda: btnclick('*'))
 btnbagi = Button(main, text = "/", font = ("ariel", 12, "bold"), bd = 7, height = 3, width = 6,
                  command = lambda: btnclick('/'))
-btnsamdeng = Button(main, text = "=", font = ("ariel", 12, "bold"), bd = 7, height = 3, width = 6,
+btnsamdeng = Button(main, text = "=", font = ("ariel", 12, "bold"), bd = 7, height = 3, width = 14,
                     command = btnsamdeng)
-btnclear = Button(main, text = "C", font = ("ariel", 12, "bold"), bd = 7, height = 3, width = 6,
+btnclear = Button(main, text = "C", font = ("ariel", 12, "bold"), bd = 7, height = 3, width = 14,
                   command = btnclear)
+koma = Button(main, text = ",", font = ("ariel", 12, "bold"), bd = 7, height = 3, width = 6,
+              command = lambda: btnclick(','))
+btnkudrat = Button(main, text = "x\u00b2", font = ("ariel", 12, "bold"), bd = 7, height = 3, width = 6, 
+                   command = btnkudrat)
 
 # positioning
 btn1.grid(row = 3, column = 0)
@@ -87,11 +96,14 @@ btn8.grid(row = 1, column = 1)
 btn9.grid(row = 1, column = 2)
 btn0.grid(row = 4, column = 1)
 
+
+btnkudrat.grid(row = 4, column = 2)
 btnplus.grid(row = 1, column = 3)
 btnmin.grid(row = 2, column = 3)
 btnkali.grid(row = 3, column = 3)
-btnbagi.grid(row = 4, column = 2)
-btnsamdeng.grid(row = 4, column = 3)
-btnclear.grid(row = 4, column = 0)
+btnbagi.grid(row = 4, column = 3)
+koma.grid(row = 4, column = 0)
+btnclear.place(x = 0, y = 375)
+btnsamdeng.place(x = 160, y = 375)
 
 main.mainloop()
